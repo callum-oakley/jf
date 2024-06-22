@@ -11,7 +11,7 @@ const args = parseArgs(Deno.args, {
     },
 });
 
-if (args.help) {
+if (args.help || Deno.args.length == 0) {
     console.log(`Evaluate the given JavaScript and print its completion value
 
 Usage: jf [OPTIONS] [JAVASCRIPT]
