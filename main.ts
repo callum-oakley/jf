@@ -18,7 +18,7 @@ Defaults:
   All options default to false. The script defaults to $.
 
 Environmnet:
-  Environment variables are exposed via the $$ variable.
+  Environment variables are exposed as global variables prefixed with $.
 `.trim();
 
 const flags = ["input", "parse", "stringify", "version", "help"];
@@ -50,7 +50,9 @@ if (args.parse) {
     globalThis.$ = JSON.parse(globalThis.$);
 }
 
-globalThis.$$ = Deno.env.toObject();
+for (const [k, v] of Object.entries(Deno.env.toObject())) {
+    globalThis[`$${k}`] = v;
+}
 
 let res = await eval?.(`"use strict";${args._[0] ?? "$"}`);
 if (args.stringify) {

@@ -2,8 +2,8 @@ run ...
     deno run --allow-all main.ts "$@"
 
 bump version
-    cat deno.json | jf -ps '$.version = $$.version; $' | sponge deno.json
+    cat deno.json | jf -ps '$.version = $version; $' | sponge deno.json
     cat README.md | jf -i '$.replace(
         /jsr:@callum-oakley\/jf@\d+\.\d+\.\d+/,
-        `jsr:@callum-oakley/jf@${$$.version}`,
+        `jsr:@callum-oakley/jf@${$version}`,
     ).trim()' | sponge README.md
