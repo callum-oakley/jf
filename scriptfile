@@ -6,4 +6,4 @@ bump version
     cat README.md | jf -i '$.replace(
         /jsr:@callum-oakley\/jf@\d+\.\d+\.\d+/,
         `jsr:@callum-oakley/jf@${$version}`,
-    ).trim()' | sponge README.md
+    )' | sponge README.md
