@@ -1,5 +1,6 @@
 import { parseArgs } from "jsr:@std/cli@^0.224.5";
 import { toText } from "jsr:@std/streams@^0.224.5";
+import { bold, red } from "jsr:@std/fmt@^0.225.4/colors";
 import pkg from "./deno.json" with { type: "json" };
 
 const help = `
@@ -84,6 +85,6 @@ async function main() {
 try {
     await main();
 } catch (err) {
-    console.error(err.message);
+    console.error(`${bold(red("error"))}: ${err.message}`);
     Deno.exit(1);
 }

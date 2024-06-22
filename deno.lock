@@ -4,6 +4,7 @@
     "specifiers": {
       "jsr:@std/bytes@^1.0.0-rc.3": "jsr:@std/bytes@1.0.0",
       "jsr:@std/cli@^0.224.5": "jsr:@std/cli@0.224.7",
+      "jsr:@std/fmt@^0.225.4": "jsr:@std/fmt@0.225.4",
       "jsr:@std/io@^0.224.1": "jsr:@std/io@0.224.2",
       "jsr:@std/streams@^0.224.5": "jsr:@std/streams@0.224.5"
     },
@@ -13,6 +14,9 @@
       },
       "@std/cli@0.224.7": {
         "integrity": "654ca6477518e5e3a0d3fabafb2789e92b8c0febf1a1d24ba4b567aba94b5977"
+      },
+      "@std/fmt@0.225.4": {
+        "integrity": "584c681cf422b70e28959b57e59012823609c087384cbf12d05f67814797fda3"
       },
       "@std/io@0.224.2": {
         "integrity": "25ecd4f674527d660ab09e571e15eb541e8eb8a4575f2d20bdbf029374a609b5"
