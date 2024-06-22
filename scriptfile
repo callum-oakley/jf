@@ -1,5 +1,5 @@
-install
-    deno install --allow-all -gf main.ts
+run ...
+    deno run main.ts "$@"
 
 publish
     deno publish
