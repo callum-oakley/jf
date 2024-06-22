@@ -1,5 +1,5 @@
-import { parseArgs } from "@std/cli";
-import { toText } from "@std/streams";
+import { parseArgs } from "jsr:@std/cli@^0.224.5";
+import { toText } from "jsr:@std/streams@^0.224.5";
 
 const help = `
 Evaluate the given JavaScript and print its completion value

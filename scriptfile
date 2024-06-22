@@ -1,5 +1,5 @@
 install
-    deno install --allow-all -gf main.js
+    deno install --allow-all -gf main.ts
 
 publish
     deno publish
