@@ -1,2 +1,2 @@
 install
-    deno install -gf main.js
+    deno install --allow-all -gf main.js

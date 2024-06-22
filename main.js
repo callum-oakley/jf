@@ -36,7 +36,7 @@ if (args.parse) {
     globalThis.$ = JSON.parse(globalThis.$);
 }
 
-let res = eval?.(`"use strict";${args._[0] ?? "$"}`);
+let res = await eval?.(`"use strict";${args._[0] ?? "$"}`);
 if (args.stringify) {
     res = JSON.stringify(res, null, 2);
 }
