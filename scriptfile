@@ -1,2 +1,5 @@
 install
     deno install --allow-all -gf main.js
+
+publish
+    deno publish

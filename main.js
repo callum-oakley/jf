@@ -1,5 +1,5 @@
-import { parseArgs } from "https://deno.land/std@0.224.0/cli/parse_args.ts";
-import { toText } from "https://deno.land/std@0.224.0/streams/to_text.ts";
+import { parseArgs } from "@std/cli";
+import { toText } from "@std/streams";
 
 const help = `
 Evaluate the given JavaScript and print its completion value
