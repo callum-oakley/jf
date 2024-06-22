@@ -1,0 +1,2 @@
+install
+    deno install -gf main.js
