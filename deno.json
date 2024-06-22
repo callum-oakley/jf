@@ -1,5 +1,8 @@
 {
   "name": "@callum-oakley/jf",
   "version": "0.1.0",
-  "exports": "./main.ts"
+  "exports": "./main.ts",
+  "compilerOptions": {
+    "noImplicitAny": false
+  }
 }
