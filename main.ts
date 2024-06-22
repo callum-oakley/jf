@@ -4,7 +4,7 @@ import { bold, red } from "jsr:@std/fmt@^0.225.4/colors";
 import pkg from "./deno.json" with { type: "json" };
 
 const help = `
-Evaluate the given JavaScript and print its completion value
+Evaluate some JavaScript and print its completion value
 
 Usage: jf [OPTIONS] [JAVASCRIPT]
 
