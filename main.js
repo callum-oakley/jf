@@ -1,6 +1,21 @@
 import { parseArgs } from "https://deno.land/std@0.224.0/cli/parse_args.ts";
 import { toText } from "https://deno.land/std@0.224.0/streams/to_text.ts";
 
+const help = `
+Evaluate the given JavaScript and print its completion value
+
+Usage: jf [OPTIONS] [JAVASCRIPT]
+
+Options:
+  -i, --input      Read STDIN as text and store it in the $ variable
+  -p, --parse      Parse STDIN as JSON and store it in the $ variable
+  -s, --stringify  JSON.stringify the completion value before printing it
+  -h, --help       Print this help message
+
+Defaults:
+  All options default to false. The script defaults to $.
+`.trim();
+
 const args = parseArgs(Deno.args, {
     boolean: ["input", "parse", "stringify", "help"],
     alias: {
@@ -12,19 +27,7 @@ const args = parseArgs(Deno.args, {
 });
 
 if (args.help || Deno.args.length == 0) {
-    console.log(`Evaluate the given JavaScript and print its completion value
-
-Usage: jf [OPTIONS] [JAVASCRIPT]
-
-Options:
-  -i, --input      Read STDIN as text and store it in the $ variable
-  -p, --parse      Parse STDIN as JSON and store it in the $ variable
-  -s, --stringify  JSON.stringify the completion value before printing it
-  -h, --help       Print this help message
-
-Defaults:
-  All options default to false. The script defaults to $.`);
-
+    console.log(help);
     Deno.exit();
 }
 
