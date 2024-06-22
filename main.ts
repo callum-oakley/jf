@@ -35,6 +35,10 @@ if (args.version) {
     Deno.exit();
 }
 
+if (args._.length > 1) {
+    throw new Error("too many arguments");
+}
+
 globalThis.$ = undefined;
 if (args.input || args.parse) {
     globalThis.$ = await toText(Deno.stdin.readable);
