@@ -23,7 +23,6 @@ const alias = {};
 for (const flag of flags) {
     alias[flag] = flag[0];
 }
-
 const args = parseArgs(Deno.args, { boolean: flags, alias });
 
 if (args.help || Deno.args.length == 0) {
