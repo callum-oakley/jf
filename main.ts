@@ -21,41 +21,58 @@ Environmnet:
   Environment variables are exposed as global variables prefixed with $.
 `.trim();
 
-const flags = ["input", "parse", "stringify", "version", "help"];
-const alias = {};
-for (const flag of flags) {
-    alias[flag] = flag[0];
-}
-const args = parseArgs(Deno.args, { boolean: flags, alias });
+async function main() {
+    const flags = ["input", "parse", "stringify", "version", "help"];
+    const alias = {};
+    for (const flag of flags) {
+        alias[flag] = flag[0];
+    }
+    const args = parseArgs(Deno.args, {
+        boolean: flags,
+        alias,
+        unknown(arg) {
+            if (arg.startsWith("-")) {
+                throw Error(`unknown option: ${arg}`);
+            }
+        },
+    });
 
-if (args.help || Deno.args.length == 0) {
-    console.log(help);
-    Deno.exit();
+    if (args.help || Deno.args.length == 0) {
+        console.log(help);
+        Deno.exit();
+    }
+
+    if (args.version) {
+        console.log(`jf ${pkg.version}`);
+        Deno.exit();
+    }
+
+    if (args._.length > 1) {
+        throw new Error("too many arguments");
+    }
+
+    globalThis.$ = undefined;
+    if (args.input || args.parse) {
+        globalThis.$ = await toText(Deno.stdin.readable);
+    }
+    if (args.parse) {
+        globalThis.$ = JSON.parse(globalThis.$);
+    }
+
+    for (const [k, v] of Object.entries(Deno.env.toObject())) {
+        globalThis[`$${k}`] = v;
+    }
+
+    let res = await eval?.(`"use strict";${args._[0] ?? "$"}`);
+    if (args.stringify) {
+        res = JSON.stringify(res, null, 2);
+    }
+    console.log(res);
 }
 
-if (args.version) {
-    console.log(`jf ${pkg.version}`);
-    Deno.exit();
+try {
+    await main();
+} catch (err) {
+    console.error(err.message);
+    Deno.exit(1);
 }
-
-if (args._.length > 1) {
-    throw new Error("too many arguments");
-}
-
-globalThis.$ = undefined;
-if (args.input || args.parse) {
-    globalThis.$ = await toText(Deno.stdin.readable);
-}
-if (args.parse) {
-    globalThis.$ = JSON.parse(globalThis.$);
-}
-
-for (const [k, v] of Object.entries(Deno.env.toObject())) {
-    globalThis[`$${k}`] = v;
-}
-
-let res = await eval?.(`"use strict";${args._[0] ?? "$"}`);
-if (args.stringify) {
-    res = JSON.stringify(res, null, 2);
-}
-console.log(res);
