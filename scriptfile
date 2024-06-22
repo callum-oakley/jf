@@ -1,5 +1,2 @@
 run ...
-    deno run main.ts "$@"
-
-publish
-    deno publish
+    deno run --allow-all main.ts "$@"
