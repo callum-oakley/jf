@@ -3,5 +3,5 @@
 ## Install
 
 ```
-deno install --allow-all -g jsr:@callum-oakley/jf
+deno install --allow-all -gf jsr:@callum-oakley/jf@0.1.1
 ```
