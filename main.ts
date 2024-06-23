@@ -6,7 +6,8 @@ import pkg from "./deno.json" with { type: "json" };
 const help = `
 Evaluate some JavaScript and print its completion value
 
-Usage: jf [OPTIONS] [JAVASCRIPT]
+Usage:
+  jf [OPTIONS] [JAVASCRIPT]
 
 Options:
   -i, --input      Read STDIN as text and store it in the $ variable
