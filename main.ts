@@ -1,6 +1,6 @@
-import { parseArgs } from "jsr:@std/cli@^0.224.5";
-import { toText } from "jsr:@std/streams@^0.224.5";
-import { bold, red } from "jsr:@std/fmt@^0.225.4/colors";
+import { parseArgs } from "jsr:@std/cli@^1.0.9";
+import { toText } from "jsr:@std/streams@^1.0.8";
+import { bold, red } from "jsr:@std/fmt@^1.0.3/colors";
 import pkg from "./deno.json" with { type: "json" };
 
 const help = `
