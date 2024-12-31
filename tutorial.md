@@ -13,7 +13,8 @@ curl 'https://api.github.com/repos/callum-oakley/jf/commits?per_page=5'
 ```
 
 GitHub returns nicely formatted JSON. For servers that don't, it can be helpful to pipe the response
-through jf to pretty-print it. The `-p` flag parses STDIN as JSON, and the `-s` flag calls `JSON.stringify` on the result.
+through jf to pretty-print it. The `-p` flag parses STDIN as JSON, and the `-s` flag calls
+`JSON.stringify` on the result.
 
 ```
 curl 'https://api.github.com/repos/callum-oakley/jf/commits?per_page=5' | jf -ps
@@ -71,7 +72,7 @@ jf -ps '$.map(x => ({
 ```
 
 Here we're making a new object for each commit as before, but this time we use another nested `map`
-to pull the commit URLs out  of each parent object.
+to pull the commit URLs out of each parent object.
 
 ---
 
